@@ -3,56 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verification</title>
+    <title>Email Verification Complete</title>
     <style>
-        body { 
+        /* THIS IS THE EXACT SAME DESIGN AS YOUR NEW INDEX.HTML */
+        :root {
+            --bg: #222; /* Dark background */
+            --ink: #ffffff; /* White text */
+            --muted: rgba(255,255,255,0.7);
+            --surface: rgba(255, 255, 255, 0.05); /* Very faint white glass */
+            --surface-border: rgba(255,255,255,0.15);
+            --primary: #ff6600; /* Your orange accent */
+            --secondary-bg: rgba(255, 255, 255, 0.1); /* New secondary button bg */
+            --secondary-hover: rgba(255, 255, 255, 0.2);
+        }
+        html, body { 
+            height: 100%; 
+        }
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            /* This is the dot grid background */
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            color: var(--ink);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            background-color: #f0f2f5;
-            margin: 0;
+            padding: 24px;
+            box-sizing: border-box;
         }
         .card {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 24px;
-            width: 90%;
-            max-width: 400px;
+            width: 100%; 
+            max-width: 440px; /* Slightly wider for the buttons */
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             text-align: center;
+            padding: 32px;
         }
         .logo {
-            /* --- THIS IS THE FIX --- */
-            /* We set a fixed size for the container */
             width: 90px;
             height: 90px;
             margin: 0 auto 16px;
             display: block; 
-            padding: 0; /* <-- REMOVED the broken padding */
-            border-radius: 20px; /* Smooth rounded edges */
-            background: #f9f5ed; /* Light background to match body */
+            border-radius: 20px;
+            background: #f9f5ed;
             box-shadow: 
-                5px 5px 10px #bebebe, /* Darker shadow on bottom-right */
-                -5px -5px 10px #ffffff; /* Lighter highlight on top-left */
-            
-            /* This part styles the icon *inside* the box */
-            /* It makes the icon slightly smaller (80x80) */
-            /* so it looks 'inset' into the 90x90 container */
-            box-sizing: border-box; /* Makes padding behave */
-            padding: 5px; /* Adds 5px of space around the icon */
-            object-fit: contain; /* Ensures the icon scales nicely */
+                5px 5px 10px #1a1a1a,
+                -5px -5px 10px #2a2a2a;
+            box-sizing: border-box;
+            padding: 10px;
+            object-fit: contain;
         }
-        h1 {
-            font-size: 22px;
-            color: #1c1e21;
-            margin-bottom: 8px;
+        h1 { 
+            margin: 0 0 10px; 
+            font-size: 24px; /* Slightly smaller */
+            color: var(--ink); 
+            font-weight: 700;
         }
-        p {
-            font-size: 16px;
-            color: #595959;
-            margin-bottom: 24px;
+        p { 
+            margin: 0 0 32px; 
+            color: var(--muted); 
+            font-size: 16px; /* Slightly smaller */
+            line-height: 1.6;
+        }
+        .button-list {
+            display: grid;
+            gap: 12px; /* Space between buttons */
         }
         .button {
             display: block;
@@ -62,32 +83,46 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 12px;
-            box-sizing: border-box; 
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
         .button-primary {
-            background-color: #ff6600; /* Your orange accent */
+            background-color: var(--primary);
             color: white;
         }
+        .button-primary:hover {
+            filter: brightness(1.1);
+        }
+        /* New Secondary Button Style */
         .button-secondary {
-            background-color: #e4e6eb;
-            color: #1c1e21;
+            background-color: var(--secondary-bg);
+            color: var(--muted);
+            border: 1px solid var(--surface-border);
+        }
+        .button-secondary:hover {
+            background-color: var(--secondary-hover);
+            color: var(--ink);
         }
     </style>
 </head>
 <body>
+
     <div class="card">
         
         <img src="https://HassanZarraq.github.io/favicon.ico" alt="Hello Stranger Logo" class="logo">
         
         <h1>Email verification complete</h1>
         <p>You can now return to the Hello Stranger app and sign in.</p>
+        
+        <div class="button-list">
+            <a href="com.hassanzarraq.hellostranger://" class="button button-primary">Open the app</a>
+            <a href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" class="button button-secondary">Open in Play Store</a>
+            <a href="https://HassanZarraq.github.io/" class="button button-secondary">Open web app</a>
+        </div>
 
-        <a href="com.hassanzarraq.hellostranger://" class="button button-primary">Open the app</a>
-        
-        <a href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" class="button button-secondary">Open in Play Store</a>
-        
-        <a href="https://HassanZarraq.github.io/" class="button button-secondary">Open web app</a>
     </div>
+
 </body>
 </html>
