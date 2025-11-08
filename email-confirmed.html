@@ -66,17 +66,16 @@
     <div class="card">
       <div class="inner">
         <div class="brand">
-          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Hello Stranger logo">
+          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Hello Stranger map pin logo">
             <defs>
               <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="hsl(16 100% 60%)"/>
                 <stop offset="100%" stop-color="hsl(25 100% 55%)"/>
               </linearGradient>
             </defs>
-            <circle cx="32" cy="32" r="28" fill="url(#g)"/>
-            <path d="M20 36c6 8 18 8 24 0" stroke="rgba(0,0,0,0.2)" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <circle cx="24" cy="26" r="3" fill="#fff"/>
-            <circle cx="40" cy="26" r="3" fill="#fff"/>
+            <circle cx="32" cy="32" r="28" fill="rgba(0,0,0,0.35)" stroke="url(#g)" stroke-width="2"/>
+            <path d="M32 14c8 0 14 6 14 14 0 12-14 22-14 22S18 40 18 28c0-8 6-14 14-14z" fill="url(#g)"/>
+            <circle cx="32" cy="28" r="5" fill="#fff"/>
           </svg>
           <div class="brand-name">Hello Stranger</div>
         </div>
@@ -86,8 +85,8 @@
         <div id="err" class="status error">We could not verify your email. Try the link again or contact support.</div>
         <div class="buttons">
           <a class="btn primary" href="com.hassanzarraq.hellostranger://auth">Open the app</a>
+          <a class="btn outline" href="https://HassanZarraq.github.io/" target="_blank" rel="noopener">Open web app</a>
           <a class="btn outline" href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" target="_blank" rel="noopener">Open in Play Store</a>
-          <a id="open-web" class="btn outline" href="#">Open web app</a>
         </div>
         <div class="foot">If the app does not open, use the Play Store button or return to your device and open the app manually.</div>
       </div>
@@ -104,24 +103,7 @@
         if (err) { errBox.textContent = err; errBox.style.display = 'block'; }
         else { okBox.style.display = 'block'; }
       } catch (_) {}
-      // Resolve paths for both root and subpath hosting
-      try {
-        var path = location.pathname;
-        var dir = path.replace(/[^/]+$/, '/'); // directory of this file, always ends with '/'
-
-        // Point the web app button to the SPA root
-        var openWeb = document.getElementById('open-web');
-        if (openWeb) {
-          var params = new URLSearchParams(location.search);
-          var appOverride = params.get('app');
-          if (appOverride) {
-            openWeb.href = appOverride;
-          } else {
-            // default to SPA auth route, then root as fallback
-            openWeb.href = '/auth';
-          }
-        }
-      } catch (_) {}
+      // (No dynamic path logic needed; links are absolute.)
     })();
   </script>
 </body>
