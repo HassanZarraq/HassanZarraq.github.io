@@ -24,9 +24,21 @@
             text-align: center;
         }
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 80px; /* Base size for the image */
+            height: 80px; /* Base size for the image */
             margin: 0 auto 16px;
+            
+            /* -- NEW STYLES FOR THE CONTAINER EFFECT -- */
+            display: block; /* Ensures margin auto works */
+            padding: 8px; /* Adds space around the image inside the container */
+            border-radius: 20px; /* More rounded edges for a smooth look */
+            background: linear-gradient(145deg, #e0e0e0, #ffffff); /* Subtle gradient for depth */
+            box-shadow: 
+                6px 6px 12px rgba(0,0,0,0.15),  /* Bottom-right shadow for "raised" effect */
+                -6px -6px 12px rgba(255,255,255,0.7), /* Top-left highlight for "raised" effect */
+                inset 2px 2px 5px rgba(255,255,255,0.5), /* Inner highlight for convexity */
+                inset -2px -2px 5px rgba(0,0,0,0.05); /* Inner shadow for convexity */
+            object-fit: contain; /* Ensures the image scales correctly within the padded container */
         }
         h1 {
             font-size: 22px;
@@ -75,3 +87,4 @@
     </div>
 </body>
 </html>
+```http://googleusercontent.com/image_generation_content/1
