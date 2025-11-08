@@ -1,110 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Stranger – Email Confirmed</title>
-  <style>
-    :root {
-      --bg: #FAF6ED;
-      --ink: #ffffff;
-      --muted: rgba(255,255,255,0.72);
-      --surface: rgba(0,0,0,0.72);
-      --surface-border: rgba(255,255,255,0.20);
-      --primary-start: hsl(16 100% 60%);
-      --primary-end: hsl(25 100% 55%);
-      --success-bg: rgba(34,197,94,0.15);
-      --success-border: rgba(34,197,94,0.35);
-      --success-text: #86efac;
-      --error-bg: rgba(239,68,68,0.16);
-      --error-border: rgba(239,68,68,0.38);
-      --error-text: #fca5a5;
-    }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      background: radial-gradient(1200px circle at 50% -200px, rgba(255,255,255,0.08), rgba(0,0,0,0) 60%), var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    }
-    .wrap { min-height: 100%; display: grid; place-items: center; padding: 24px; }
-    .card {
-      width: 100%; max-width: 520px;
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .inner { padding: 28px; }
-    .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-    .brand-logo { width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 6px 16px rgba(0,0,0,0.35); }
-    .brand-name { font-weight: 800; letter-spacing: 0.2px; background: linear-gradient(135deg, var(--primary-start), var(--primary-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    h1 { margin: 0 0 8px; font-size: 22px; color: var(--ink); }
-    p { margin: 0 0 16px; color: var(--muted); }
-    .buttons { display: grid; gap: 10px; margin-top: 18px; }
-    a.btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 16px; border-radius: 10px; text-decoration: none; font-weight: 700; }
-    a.primary {
-      background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
-      color: #fff;
-      box-shadow: 0 0 20px rgba(255,115,60,0.25);
-    }
-    a.outline {
-      border: 1px solid var(--surface-border);
-      color: var(--ink);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-    }
-    .foot { margin-top: 18px; font-size: 12px; color: var(--muted); text-align: center; }
-    .status { font-size: 13px; color: var(--success-text); background: var(--success-bg); border: 1px solid var(--success-border); padding: 10px 12px; border-radius: 8px; margin: 12px 0; display: none; }
-    .error { color: var(--error-text); background: var(--error-bg); border-color: var(--error-border); display: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #1c1e21;
+            margin-bottom: 8px;
+        }
+        p {
+            font-size: 16px;
+            color: #595959;
+            margin-bottom: 24px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            box-sizing: border-box; /* Important fix */
+        }
+        .button-primary {
+            background-color: #ff6600; /* Your orange accent */
+            color: white;
+        }
+        .button-secondary {
+            background-color: #e4e6eb;
+            color: #1c1e21;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
     <div class="card">
-      <div class="inner">
-        <div class="brand">
-          <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Hello Stranger map pin logo">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="hsl(16 100% 60%)"/>
-                <stop offset="100%" stop-color="hsl(25 100% 55%)"/>
-              </linearGradient>
-            </defs>
-            <circle cx="32" cy="32" r="28" fill="rgba(0,0,0,0.35)" stroke="url(#g)" stroke-width="2"/>
-            <path d="M32 14c8 0 14 6 14 14 0 12-14 22-14 22S18 40 18 28c0-8 6-14 14-14z" fill="url(#g)"/>
-            <circle cx="32" cy="28" r="5" fill="#fff"/>
-          </svg>
-          <div class="brand-name">Hello Stranger</div>
-        </div>
+        <img src="icon.png" alt="Hello Stranger Logo" class="logo">
+        
         <h1>Email verification complete</h1>
         <p>You can now return to the Hello Stranger app and sign in.</p>
-        <div id="msg" class="status">Your email was confirmed successfully.</div>
-        <div id="err" class="status error">We could not verify your email. Try the link again or contact support.</div>
-        <div class="buttons">
-          <a class="btn primary" href="com.hassanzarraq.hellostranger://auth">Open the app</a>
-          <a class="btn outline" href="https://HassanZarraq.github.io/" target="_blank" rel="noopener">Open web app</a>
-          <a class="btn outline" href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" target="_blank" rel="noopener">Open in Play Store</a>
-        </div>
-        <div class="foot">If the app does not open, use the Play Store button or return to your device and open the app manually.</div>
-      </div>
+
+        <a href="com.hassanzarraq.hellostranger://" class="button button-primary">Open the app</a>
+        
+        <a href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" class="button button-secondary">Open in Play Store</a>
+        
+        <a href="https://HassanZarraq.github.io/" class="button button-secondary">Open web app</a>
     </div>
-  </div>
-  <script>
-    (function() {
-      try {
-        var p = new URLSearchParams(location.search);
-        var type = p.get('type');
-        var err = p.get('error_description');
-        var okBox = document.getElementById('msg');
-        var errBox = document.getElementById('err');
-        if (err) { errBox.textContent = err; errBox.style.display = 'block'; }
-        else { okBox.style.display = 'block'; }
-      } catch (_) {}
-      // (No dynamic path logic needed; links are absolute.)
-    })();
-  </script>
 </body>
 </html>
