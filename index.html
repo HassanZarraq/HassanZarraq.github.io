@@ -3,56 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Stranger</title>
+    <title>Hello Stranger - Welcome</title>
     <style>
+        :root {
+            --bg: #222; /* Dark background */
+            --ink: #ffffff; /* White text */
+            --muted: rgba(255,255,255,0.7);
+            --surface: rgba(255, 255, 255, 0.05); /* Very faint white glass */
+            --surface-border: rgba(255,255,255,0.15);
+            --primary: #ff6600; /* Your orange accent */
+        }
+        html, body { 
+            height: 100%; 
+        }
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fafafa;
             margin: 0;
-            padding: 0;
+            background-color: var(--bg);
+            /* This adds a subtle dot grid, like a journal */
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            color: var(--ink);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            justify-content: center;
+            padding: 24px;
+            box-sizing: border-box;
         }
-        .container {
+        .card {
+            width: 100%; 
+            max-width: 500px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             text-align: center;
-            padding: 40px;
-            max-width: 600px;
+            padding: 32px;
         }
-        h1 {
-            font-size: 36px;
-            color: #111;
-            margin-bottom: 10px;
+        .logo {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 16px;
+            display: block; 
+            border-radius: 20px; /* Smooth rounded edges */
+            /* 3D Neumorphism Effect */
+            background: #222;
+            box-shadow: 
+                5px 5px 10px #1a1a1a,
+                -5px -5px 10px #2a2a2a;
+            box-sizing: border-box;
+            padding: 10px;
+            object-fit: contain;
         }
-        p {
-            font-size: 18px;
-            color: #595959;
-            margin-bottom: 30px;
+        h1 { 
+            margin: 0 0 10px; 
+            font-size: 32px; 
+            color: var(--ink); 
+            font-weight: 700;
         }
-        .footer {
-            margin-top: 50px;
-            font-size: 14px;
+        p { 
+            margin: 0 0 32px; 
+            color: var(--muted); 
+            font-size: 18px; 
+            line-height: 1.6;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .button:hover {
+            transform: scale(1.02);
+        }
+        .footer { 
+            margin-top: 32px; 
+            font-size: 14px; 
         }
         .footer a {
-            color: #3030F1;
+            color: var(--muted);
             text-decoration: none;
             margin: 0 10px;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover {
+            color: var(--ink);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="card">
+        
+        <img src="https://HassanZarraq.github.io/favicon.ico" alt="Hello Stranger Logo" class="logo">
+        
         <h1>Hello Stranger</h1>
         <p>A self-improvement app designed to help you build confidence and overcome social anxiety through a series of guided, real-world challenges.</p>
         
+        <a href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" class="button">
+            Download on the Google Play Store
+        </a>
+
         <div class="footer">
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/terms.html">Terms & Conditions</a>
-            <a href="/cookies.html">Cookie Policy</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="cookies.html">Cookie Policy</a>
         </div>
     </div>
 
