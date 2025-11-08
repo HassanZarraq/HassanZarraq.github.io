@@ -24,21 +24,25 @@
             text-align: center;
         }
         .logo {
-            width: 80px; /* Base size for the image */
-            height: 80px; /* Base size for the image */
+            /* --- THIS IS THE FIX --- */
+            /* We set a fixed size for the container */
+            width: 90px;
+            height: 90px;
             margin: 0 auto 16px;
-            
-            /* -- NEW STYLES FOR THE CONTAINER EFFECT -- */
-            display: block; /* Ensures margin auto works */
-            padding: 8px; /* Adds space around the image inside the container */
-            border-radius: 20px; /* More rounded edges for a smooth look */
-            background: linear-gradient(145deg, #e0e0e0, #ffffff); /* Subtle gradient for depth */
+            display: block; 
+            padding: 0; /* <-- REMOVED the broken padding */
+            border-radius: 20px; /* Smooth rounded edges */
+            background: #f0f2f5; /* Light background to match body */
             box-shadow: 
-                6px 6px 12px rgba(0,0,0,0.15),  /* Bottom-right shadow for "raised" effect */
-                -6px -6px 12px rgba(255,255,255,0.7), /* Top-left highlight for "raised" effect */
-                inset 2px 2px 5px rgba(255,255,255,0.5), /* Inner highlight for convexity */
-                inset -2px -2px 5px rgba(0,0,0,0.05); /* Inner shadow for convexity */
-            object-fit: contain; /* Ensures the image scales correctly within the padded container */
+                5px 5px 10px #bebebe, /* Darker shadow on bottom-right */
+                -5px -5px 10px #ffffff; /* Lighter highlight on top-left */
+            
+            /* This part styles the icon *inside* the box */
+            /* It makes the icon slightly smaller (80x80) */
+            /* so it looks 'inset' into the 90x90 container */
+            box-sizing: border-box; /* Makes padding behave */
+            padding: 5px; /* Adds 5px of space around the icon */
+            object-fit: contain; /* Ensures the icon scales nicely */
         }
         h1 {
             font-size: 22px;
@@ -59,7 +63,7 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 12px;
-            box-sizing: border-box; /* Important fix */
+            box-sizing: border-box; 
         }
         .button-primary {
             background-color: #ff6600; /* Your orange accent */
@@ -87,4 +91,3 @@
     </div>
 </body>
 </html>
-```http://googleusercontent.com/image_generation_content/1
