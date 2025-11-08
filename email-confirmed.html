@@ -66,7 +66,7 @@
     <div class="card">
       <div class="inner">
         <div class="brand">
-          <img src="icon.png" alt="Hello Stranger" class="brand-logo">
+          <img id="brand-logo" alt="Hello Stranger" class="brand-logo">
           <div class="brand-name">Hello Stranger</div>
         </div>
         <h1>Email verification complete</h1>
@@ -76,7 +76,7 @@
         <div class="buttons">
           <a class="btn primary" href="com.hassanzarraq.hellostranger://auth">Open the app</a>
           <a class="btn outline" href="https://play.google.com/store/apps/details?id=com.hassanzarraq.hellostranger" target="_blank" rel="noopener">Open in Play Store</a>
-          <a class="btn outline" href="/auth">Open web app</a>
+          <a id="open-web" class="btn outline" href="#">Open web app</a>
         </div>
         <div class="foot">If the app does not open, use the Play Store button or return to your device and open the app manually.</div>
       </div>
@@ -92,6 +92,53 @@
         var errBox = document.getElementById('err');
         if (err) { errBox.textContent = err; errBox.style.display = 'block'; }
         else { okBox.style.display = 'block'; }
+      } catch (_) {}
+      // Resolve paths for both root and subpath hosting
+      try {
+        var path = location.pathname;
+        var dir = path.replace(/[^/]+$/, '/'); // directory of this file, always ends with '/'
+
+        // 1) Set logo src relative to this directory
+        var logoEl = document.getElementById('brand-logo');
+        if (logoEl) {
+          var iconCandidates = [
+            dir + 'icon.png',
+            dir + 'public/icon.png',
+            '/game-of-strangers-main/public/icon.png',
+            '/game-of-strangers-main/icon.png',
+            '/public/icon.png',
+            '/icon.png'
+          ];
+          (function tryNextIcon(i){
+            if (i >= iconCandidates.length) { logoEl.style.display = 'none'; return; }
+            var src = iconCandidates[i];
+            var img = new Image();
+            img.onload = function(){ logoEl.src = src; logoEl.style.display = 'block'; };
+            img.onerror = function(){ tryNextIcon(i+1); };
+            img.src = src;
+          })(0);
+        }
+
+        // 2) Point the web app button to the SPA root
+        var openWeb = document.getElementById('open-web');
+        if (openWeb) {
+          var baseCandidates = [
+            '/game-of-strangers-main/',
+            dir.endsWith('/public/') ? dir.slice(0, -8) : dir,
+            '/',
+          ];
+          (async function pickBase(){
+            for (var i=0; i<baseCandidates.length; i++) {
+              var b = baseCandidates[i];
+              try {
+                var res = await fetch(b, { method: 'HEAD', mode: 'no-cors' });
+                // In no-cors, we can't rely on status; still set the first candidate
+                openWeb.href = b; break;
+              } catch (_) { /* try next */ }
+            }
+            if (!openWeb.href || openWeb.href === '#') openWeb.href = '/';
+          })();
+        }
       } catch (_) {}
     })();
   </script>
